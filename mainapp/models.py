@@ -41,9 +41,9 @@ class Deal(models.Model):
     @staticmethod
     def get_items():
         return
-        Accommodation.objects.filter(is_active=True).order_by('country',
-                 'regions',
-                 'name')
+        Deal.objects.filter(is_active=True).order_by('country',
+                                                     'regions',
+                                                     'name')
 
 
 def __str__(self):

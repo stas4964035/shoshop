@@ -6,5 +6,5 @@ app_name = 'mainapp'
 urlpatterns = [
     path('', mainapp.deals, name='index'),
     path('deal_details/<int:pk>/', mainapp.deal,
-                                                     name='deal'),
+         name='deal'),
 ]

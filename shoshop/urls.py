@@ -20,6 +20,7 @@ from django.urls import path
 from django.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
+
 import mainapp.views as mainapp
 
 urlpatterns = [
@@ -27,7 +28,7 @@ urlpatterns = [
     path('', mainapp.main, name='main'),
     path('list_of_deals/', include('mainapp.urls',
                                    namespace='dl')),
-    path('', mainapp.deals, name='index'),
+    #path('', mainapp.deals, name='index'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

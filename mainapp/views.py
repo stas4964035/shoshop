@@ -9,7 +9,7 @@ def main(request):
 
 
 def deals(request):
-    title = 'предложение'
+    title = 'предложения'
 
     list_of_deals = Deal.objects.filter(is_active=True)
 
