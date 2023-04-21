@@ -28,6 +28,8 @@ urlpatterns = [
     path('', mainapp.main, name='main'),
     path('list_of_deals/', include('mainapp.urls',
                                    namespace='dl')),
+    path('list_of_companies/', include('comapp.urls',
+                                   namespace='com')),
     #path('', mainapp.deals, name='index'),
 ]
 if settings.DEBUG:
