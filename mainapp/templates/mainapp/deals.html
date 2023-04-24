@@ -1,54 +1,172 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
-{% block list %}
+{% block content %}
+
+<div
+        class="hero page-inner overlay"
+        style="background-image: url('{% static 'images/hero_bg_1.jpg' %}')"
+>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-9 text-center mt-5">
+                <h1 class="heading" data-aos="fade-up">Properties</h1>
+
+                <nav
+                        aria-label="breadcrumb"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                >
+                    <ol class="breadcrumb text-center justify-content-center">
+                        <li class="breadcrumb-item"><a
+                                href="index.html">Home</a></li>
+                        <li
+                                class="breadcrumb-item active text-white-50"
+                                aria-current="page"
+                        >
+                            Properties
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="section">
-
-        <div class="container mt-3">
-                <div class="row centered">
-                    {% for offer in list_of_companies %}
-
-                        <div class="card  col-lg-4" style="width: 16rem;
-                        display: flex">
-                            <img src="/media/{{ offer.image }}"
-                                 class="card-img-top filters__img" alt="...">
-                            <div class="card-body fa fa-align-justify">
-                                <h5 class="card-title">{{ offer.name|title }}</h5>
-                                <p class="card-text">{{ offer.region|title }}</p>
-                                <p class="card-text">{{ offer.price }} за сутки.</p>
-                                <a href="{% url 'com:company' offer.pk %}"
-                                   class="btn btn-danger">Подробнее</a>
-                            </div>
-                        </div>
-
-                    {% endfor %}
-                </div>
+    <div class="container">
+        <div class="row mb-5 align-items-center">
+            <div class="col-lg-6 text-center mx-auto">
+                <h2 class="font-weight-bold text-primary heading">
+                    Featured Properties
+                </h2>
             </div>
-{% endblock %}
-
-        {% block content %}
-
-
-            <div class="container mt-3">
-                <div class="row centered">
-                    {% for offer in list_of_deals %}
-
-                        <div class="card  col-lg-4" style="width: 16rem;
-                        display: flex">
-                            <img src="/media/{{ offer.image }}"
-                                 class="card-img-top filters__img" alt="...">
-                            <div class="card-body fa fa-align-justify">
-                                <h5 class="card-title">{{ offer.name|title }}</h5>
-                                <p class="card-text">{{ offer.region|title }}</p>
-                                <p class="card-text">{{ offer.price }} за сутки.</p>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="property-slider-wrap">
+                    <div class="property-slider">
+                        {% for offer in list_of_deals %}
+                            <div class="property-item">
                                 <a href="{% url 'dl:deal' offer.pk %}"
-                                   class="btn btn-danger">Подробнее</a>
-                            </div>
-                        </div>
+                                   class="img">
+                                    <img src="/media/{{ offer.image }}" alt="{{ offer.name|title }}"
+                                         class="img-fluid"/>
+                                </a>
 
-                    {% endfor %}
+                                <div class="property-content">
+                                    <div class="price mb-2"><span>{{ offer.price }}</span>
+                                    </div>
+                                    <div>
+                          <span class="d-block mb-2 text-black-50"
+                          >{{ offer.name|title }}</span
+                          >
+                                        <span class="city d-block mb-3">{{ offer.region|title }}</span>
+
+                                        <div class="specs d-flex mb-4">
+                            <span class="d-block d-flex align-items-center me-3">
+                              <span class="icon-bed me-2"></span>
+                              <span class="caption">2 beds</span>
+                            </span>
+                                            <span class="d-block d-flex align-items-center">
+                              <span class="icon-bath me-2"></span>
+                              <span class="caption">2 baths</span>
+                            </span>
+                                        </div>
+
+                                        <a
+                                                href="{% url 'dl:deal' offer.pk %}"
+                                                class="btn btn-primary py-2 px-3"
+                                        >See details</a
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                          {% endfor %}
+                    </div>
+
+                    <div
+                            id="property-nav"
+                            class="controls"
+                            tabindex="0"
+                            aria-label="Carousel Navigation"
+                    >
+                <span
+                        class="prev"
+                        data-controls="prev"
+                        aria-controls="property"
+                        tabindex="-1"
+                >Prev</span
+                >
+                        <span
+                                class="next"
+                                data-controls="next"
+                                aria-controls="property"
+                                tabindex="-1"
+                        >Next</span
+                        >
+                    </div>
                 </div>
             </div>
-
+        </div>
+    </div>
 </div>
+
+<div class="section section-properties">
+    <div class="container">
+        <div class="row">
+            {% for offer in list_of_deals %}
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+
+                    <div class="property-item mb-30">
+                        <a href="{% url 'dl:deal' offer.pk %}" class="img">
+                            <img src="/media/{{ offer.image }}" alt="{{ offer.name|title }}"
+                                 class="img-fluid"/>
+                        </a>
+
+                        <div class="property-content">
+                            <div class="price mb-2"><span>{{ offer.price }}</span></div>
+                            <div>
+                      <span class="d-block mb-2 text-black-50"
+                      >{{ offer.name|title }}</span
+                      >
+                                <span class="city d-block mb-3">{{ offer.region|title }}</span>
+
+                                <div class="specs d-flex mb-4">
+                        <span class="d-block d-flex align-items-center me-3">
+                          <span class="icon-bed me-2"></span>
+                          <span class="caption">2 beds</span>
+                        </span>
+                                    <span class="d-block d-flex align-items-center">
+                          <span class="icon-bath me-2"></span>
+                          <span class="caption">2 baths</span>
+                        </span>
+                                </div>
+
+                                <a
+                                        href="{% url 'dl:deal' offer.pk %}"
+                                        class="btn btn-primary py-2 px-3"
+                                >See details</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .item -->
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row align-items-center py-5">
+            <div class="col-lg-3">Pagination (1 of 10)</div>
+            <div class="col-lg-6 text-center">
+                <div class="custom-pagination">
+                    <a href="#">1</a>
+                    <a href="#" class="active">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
