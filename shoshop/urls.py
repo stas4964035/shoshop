@@ -32,6 +32,8 @@ urlpatterns = [
     path('list_of_companies/', include('comapp.urls',
                                        namespace='com')),
     path('auth/', include('authapp.urls', namespace='auth')),
+    path('', include('social_django.urls', namespace='social')),
+    path('admin/', include('adminapp.urls', namespace='admin')),
     # path('', mainapp.deals, name='index'),
 ]
 if settings.DEBUG:

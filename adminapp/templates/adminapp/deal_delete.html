@@ -1,0 +1,23 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="user_delete">
+        Уверены, что хотите удалить {{ deal_to_delete.username }}
+        {% if deal_to_delete.first_name %}
+                    ({{ deal_to_delete.first_name|title }}</b>
+                    {% if deal_to_delete.last_name %}
+                        {{ deal_to_delete.last_name|title }}
+                    {% endif %})
+                {% endif %}?
+        <form action="{% url 'admin:deal_delete' deal_to_delete.pk %}"
+              method="post">
+            {% csrf_token %}
+            <input class="btn btn-danger" type="submit" value="удалить">
+        </form>
+        <button class="btn btn-success">
+            <a href="{% url 'admin:deals' deal_to_delete.country.pk%}">
+                отмена</a>
+        </button>
+    </div>
+{% endblock %}

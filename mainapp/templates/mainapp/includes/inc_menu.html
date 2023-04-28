@@ -43,6 +43,12 @@
                                 <li>
                                     <a href="{% url 'auth:edit' %}">профиль</a>
                                 </li>
+                                {% if user.is_superuser %}
+                                    <li>
+                                        <a href="{% url 'admin:users' %}">админка</a>
+                                    </li>
+                                {% endif %}
+
                                 <li>
                                     <a href="{% url 'auth:logout' %}">выйти</a>
                                 </li>
