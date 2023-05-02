@@ -40,11 +40,9 @@ class Deal(models.Model):
 
     @staticmethod
     def get_items():
-        return
-        Deal.objects.filter(is_active=True).order_by('country',
-                                                     'regions',
-                                                     'name')
+        return Deal.objects.filter(is_active=True).order_by('country',
+                                                            'regions',
+                                                            'name')
 
-
-def __str__(self):
-    return f'{self.name} ({self.regions}, {self.country.name})'
+    def __str__(self):
+        return f'{self.name} ({self.country.name})'

@@ -46,6 +46,9 @@
                                 <li>
                                     <a href="{% url 'basket:view' %}">корзина</a>
                                 </li>
+                                <li>
+                                    <a href="{% url 'order:orders_list' %}">заказы</a>
+                                </li>
                                 {% if user.is_superuser %}
                                     <li>
                                         <a href="{% url 'admin:users' %}">админка</a>

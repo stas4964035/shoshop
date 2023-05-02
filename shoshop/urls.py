@@ -25,7 +25,7 @@ import mainapp.views as mainapp
 import comapp.views as comapp
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
+
     path('', mainapp.main, name='main'),
     path('list_of_deals/', include('mainapp.urls',
                                    namespace='dl')),
@@ -35,7 +35,8 @@ urlpatterns = [
     path('', include('social_django.urls', namespace='social')),
     path('admin/', include('adminapp.urls', namespace='admin')),
     path('basket/', include('basketapp.urls', namespace='basket')),
-    # path('', mainapp.deals, name='index'),
+    path('order/', include('ordersapp.urls', namespace='order')),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
