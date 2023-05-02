@@ -55,6 +55,14 @@
             <p class="text-black-50">
               {{ deal.price }}
             </p>
+            <br><br><br><br>
+            </div>
+            <div class="float-right">
+                <button class="btn  btn-danger ">
+                    <a style="color: white; text-decoration: none"
+                       href="{% url 'basket:add' deal.pk %}">Забронировать</a>
+                </button>
+            </div>
 
             <div class="d-block agent-box p-5">
               <div class="img mb-4">

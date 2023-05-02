@@ -43,6 +43,9 @@
                                 <li>
                                     <a href="{% url 'auth:edit' %}">профиль</a>
                                 </li>
+                                <li>
+                                    <a href="{% url 'basket:view' %}">корзина</a>
+                                </li>
                                 {% if user.is_superuser %}
                                     <li>
                                         <a href="{% url 'admin:users' %}">админка</a>
