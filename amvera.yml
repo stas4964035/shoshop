@@ -1,0 +1,11 @@
+meta:
+  environment: python
+  toolchain:
+    name: pip
+    version: 3.7
+build:
+  requirementsPath: requirements.txt
+run:
+  command: gunicorn shoshop.wsgi:application --log-file -
+  persistenceMount: /static
+  containerPort: 80
