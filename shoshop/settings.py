@@ -24,7 +24,7 @@ SECRET_KEY = 'mh5&0v5s1h*4v&-tk5a6(5u1!yna%abx2d_a5*e6586dd__*3d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dealshop.onrender.com',]
 
 # Application definition
 
@@ -79,15 +79,19 @@ WSGI_APPLICATION = 'shoshop.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-
     'default': {
-        'NAME': 'shoshop',
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'prj_user',
-        'PASSWORD': 'prj_user',
-        'HOST': 'localhost',
-        'PORT': '5433',
-    }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+
+    # 'default': {
+    #     'NAME': 'shoshop',
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'USER': 'prj_user',
+    #     'PASSWORD': 'prj_user',
+    #     'HOST': 'localhost',
+    #     'PORT': '5433',
+    # }
 
 }
 
