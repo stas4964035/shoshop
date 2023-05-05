@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 import json
 import os
+import mimetypes
+
+mimetypes.add_type("text/css", ".css", True)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'mh5&0v5s1h*4v&-tk5a6(5u1!yna%abx2d_a5*e6586dd__*3d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['dealshop.onrender.com',]
+ALLOWED_HOSTS = ['dealshop.onrender.com', ]
 
 # Application definition
 
@@ -138,14 +141,10 @@ AUTHENTICATION_BACKENDS = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-# STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
-
-
-STATIC_URL = os.path.join(BASE_DIR, "static")
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -154,7 +153,6 @@ with open('shoshop/vk.json', 'r') as f:
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = VK['SOCIAL_AUTH_VK_OAUTH2_KEY']
 SOCIAL_AUTH_VK_OAUTH2_SECRET = VK['SOCIAL_AUTH_VK_OAUTH2_SECRET']
-
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
